@@ -1,0 +1,98 @@
+service: QuiztopiaAPI-AWS
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: ${env:AWS_PROFILE}
+  region: eu-north-1
+  iam:
+    role: ${env:AWS_ROLE}
+  deploymentMethod: direct
+
+useDotenv: true
+
+plugins:
+ - serverless-webpack
+
+package: 
+  individually: true
+
+functions:
+  getAllQuizzes:
+    handler: functions/getAllQuizzes/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz'
+          method: GET
+  createQuiz:
+    handler: functions/createQuiz/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz'
+          method: POST
+  getQuiz:
+    handler: functions/getQuiz/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz/{quizId}'
+          method: GET
+  updateQuiz:
+    handler: functions/updateQuiz/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz/{quizId}'
+          method: PUT
+  removeQuiz:
+    handler: functions/removeQuiz/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz/{quizId}'
+          method: DELETE
+  addQuizQuestion:
+    handler: functions/addQuizQuestion/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz/{quizId}/question'
+          method: POST
+  authSignup:
+    handler: functions/authSignup/index.handler
+    events:
+      - httpApi:
+          path: '/api/auth/signup'
+          method: POST
+  authLogin:
+    handler: functions/authLogin/index.handler
+    events:
+      - httpApi:
+          path: '/api/auth/login'
+          method: POST
+
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${env:USER_TABLE}
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+    QuizTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${env:QUIZ_TABLE}
+        AttributeDefinitions:
+          - AttributeName: quizId
+            AttributeType: S
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: quizId
+            KeyType: HASH
+          - AttributeName: userId
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
