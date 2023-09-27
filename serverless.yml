@@ -19,12 +19,12 @@ package:
   individually: true
 
 functions:
-  # getAllQuizzes:
-  #   handler: functions/getAllQuizzes/index.handler
-  #   events:
-  #     - httpApi:
-  #         path: '/api/quiz'
-  #         method: GET
+  getAllQuizzes:
+    handler: functions/getAllQuizzes/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz'
+          method: GET
   createQuiz:
     handler: functions/createQuiz/index.handler
     events:
