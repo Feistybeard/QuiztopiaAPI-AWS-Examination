@@ -2,7 +2,7 @@
   "name": "quiztopiaapi-aws-examination",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "@middy/core": "^4.6.4",
+    "aws-sdk": "^2.1464.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {

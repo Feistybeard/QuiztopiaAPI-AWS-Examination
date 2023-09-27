@@ -19,54 +19,54 @@ package:
   individually: true
 
 functions:
-  getAllQuizzes:
-    handler: functions/getAllQuizzes/index.handler
-    events:
-      - httpApi:
-          path: '/api/quiz'
-          method: GET
-  createQuiz:
-    handler: functions/createQuiz/index.handler
-    events:
-      - httpApi:
-          path: '/api/quiz'
-          method: POST
-  getQuiz:
-    handler: functions/getQuiz/index.handler
-    events:
-      - httpApi:
-          path: '/api/quiz/{quizId}'
-          method: GET
-  updateQuiz:
-    handler: functions/updateQuiz/index.handler
-    events:
-      - httpApi:
-          path: '/api/quiz/{quizId}'
-          method: PUT
-  removeQuiz:
-    handler: functions/removeQuiz/index.handler
-    events:
-      - httpApi:
-          path: '/api/quiz/{quizId}'
-          method: DELETE
-  addQuizQuestion:
-    handler: functions/addQuizQuestion/index.handler
-    events:
-      - httpApi:
-          path: '/api/quiz/{quizId}/question'
-          method: POST
+  # getAllQuizzes:
+  #   handler: functions/getAllQuizzes/index.handler
+  #   events:
+  #     - httpApi:
+  #         path: '/api/quiz'
+  #         method: GET
+  # createQuiz:
+  #   handler: functions/createQuiz/index.handler
+  #   events:
+  #     - httpApi:
+  #         path: '/api/quiz'
+  #         method: POST
+  # getQuiz:
+  #   handler: functions/getQuiz/index.handler
+  #   events:
+  #     - httpApi:
+  #         path: '/api/quiz/{quizId}'
+  #         method: GET
+  # updateQuiz:
+  #   handler: functions/updateQuiz/index.handler
+  #   events:
+  #     - httpApi:
+  #         path: '/api/quiz/{quizId}'
+  #         method: PUT
+  # removeQuiz:
+  #   handler: functions/removeQuiz/index.handler
+  #   events:
+  #     - httpApi:
+  #         path: '/api/quiz/{quizId}'
+  #         method: DELETE
+  # addQuizQuestion:
+  #   handler: functions/addQuizQuestion/index.handler
+  #   events:
+  #     - httpApi:
+  #         path: '/api/quiz/{quizId}/question'
+  #         method: POST
   authSignup:
     handler: functions/authSignup/index.handler
     events:
       - httpApi:
           path: '/api/auth/signup'
           method: POST
-  authLogin:
-    handler: functions/authLogin/index.handler
-    events:
-      - httpApi:
-          path: '/api/auth/login'
-          method: POST
+  # authLogin:
+  #   handler: functions/authLogin/index.handler
+  #   events:
+  #     - httpApi:
+  #         path: '/api/auth/login'
+  #         method: POST
 
 resources:
   Resources:
