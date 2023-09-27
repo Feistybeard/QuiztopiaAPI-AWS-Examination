@@ -25,12 +25,12 @@ functions:
   #     - httpApi:
   #         path: '/api/quiz'
   #         method: GET
-  # createQuiz:
-  #   handler: functions/createQuiz/index.handler
-  #   events:
-  #     - httpApi:
-  #         path: '/api/quiz'
-  #         method: POST
+  createQuiz:
+    handler: functions/createQuiz/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz'
+          method: POST
   # getQuiz:
   #   handler: functions/getQuiz/index.handler
   #   events:
