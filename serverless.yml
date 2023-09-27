@@ -43,12 +43,12 @@ functions:
   #     - httpApi:
   #         path: '/api/quiz/{quizId}'
   #         method: PUT
-  # removeQuiz:
-  #   handler: functions/removeQuiz/index.handler
-  #   events:
-  #     - httpApi:
-  #         path: '/api/quiz/{quizId}'
-  #         method: DELETE
+  removeQuiz:
+    handler: functions/removeQuiz/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz/{quizId}'
+          method: DELETE
   # addQuizQuestion:
   #   handler: functions/addQuizQuestion/index.handler
   #   events:

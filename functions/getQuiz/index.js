@@ -13,6 +13,9 @@ exports.handler = async (event) => {
       })
       .promise();
 
+    if (!quiz.Item)
+      return sendError(400, { success: false, message: 'Quiz not found' });
+
     return sendResponse(200, { success: true, quiz: quiz.Item });
   } catch (error) {
     return sendError(500, error);
