@@ -7,7 +7,7 @@ async function getUser(userName) {
   try {
     const user = await db
       .scan({
-        TableName: 'QuiztopiaUsers',
+        TableName: 'QuiztopiaUsersTbl',
         FilterExpression: 'userName = :userName',
         ExpressionAttributeValues: {
           ':userName': userName,

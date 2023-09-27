@@ -24,7 +24,7 @@ const handler = middy()
 
       await db
         .put({
-          TableName: 'QuiztopiaQuizzes',
+          TableName: 'QuiztopiaQuizzesTbl',
           Item: quiz,
         })
         .promise();

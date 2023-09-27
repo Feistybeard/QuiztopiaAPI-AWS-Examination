@@ -5,7 +5,7 @@ exports.handler = async (event) => {
   try {
     const allQuizzes = await db
       .scan({
-        TableName: 'QuiztopiaQuizzes',
+        TableName: 'QuiztopiaQuizzesTbl',
       })
       .promise();
 

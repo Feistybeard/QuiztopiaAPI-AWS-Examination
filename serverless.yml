@@ -31,12 +31,12 @@ functions:
       - httpApi:
           path: '/api/quiz'
           method: POST
-  # getQuiz:
-  #   handler: functions/getQuiz/index.handler
-  #   events:
-  #     - httpApi:
-  #         path: '/api/quiz/{quizId}'
-  #         method: GET
+  getQuiz:
+    handler: functions/getQuiz/index.handler
+    events:
+      - httpApi:
+          path: '/api/quiz/{quizId}'
+          method: GET
   # updateQuiz:
   #   handler: functions/updateQuiz/index.handler
   #   events:
@@ -88,11 +88,7 @@ resources:
         AttributeDefinitions:
           - AttributeName: quizId
             AttributeType: S
-          - AttributeName: userId
-            AttributeType: S
         KeySchema:
           - AttributeName: quizId
             KeyType: HASH
-          - AttributeName: userId
-            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST

@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
 
     const checkUserExists = await db
       .scan({
-        TableName: 'QuiztopiaUsers',
+        TableName: 'QuiztopiaUsersTbl',
         FilterExpression: 'userName = :userName',
         ExpressionAttributeValues: {
           ':userName': userToCreate.userName,
@@ -40,7 +40,7 @@ exports.handler = async (event, context) => {
     } else {
       await db
         .put({
-          TableName: 'QuiztopiaUsers',
+          TableName: 'QuiztopiaUsersTbl',
           Item: userToCreate,
         })
         .promise();
