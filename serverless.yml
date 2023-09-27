@@ -61,12 +61,12 @@ functions:
       - httpApi:
           path: '/api/auth/signup'
           method: POST
-  # authLogin:
-  #   handler: functions/authLogin/index.handler
-  #   events:
-  #     - httpApi:
-  #         path: '/api/auth/login'
-  #         method: POST
+  authLogin:
+    handler: functions/authLogin/index.handler
+    events:
+      - httpApi:
+          path: '/api/auth/login'
+          method: POST
 
 resources:
   Resources:
