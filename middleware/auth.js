@@ -8,7 +8,6 @@ const validateToken = {
       if (!token) throw new Error();
 
       const data = jwt.verify(token, 'secretpassword');
-      console.log('data', data);
       request.event.userId = data.userId;
       request.event.userName = data.userName;
 

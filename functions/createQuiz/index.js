@@ -10,11 +10,26 @@ const handler = middy()
       if (!event?.userId || (event?.error && event?.error === '401'))
         return sendError(401, { success: false, message: 'Invalid token' });
 
-      const quizId = uuidv4();
       const { quizName } = JSON.parse(event.body);
       if (!quizName)
         return sendError(400, { success: false, message: 'Missing quizName' });
+      const quizNameCheck = await db
+        .scan({
+          TableName: 'QuiztopiaQuizzesTbl',
+          FilterExpression: 'quizName = :quizName',
+          ExpressionAttributeValues: {
+            ':quizName': quizName,
+          },
+        })
+        .promise();
+      if (quizNameCheck.Items.length > 0) {
+        return sendError(400, {
+          success: false,
+          message: 'Quiz name already exists',
+        });
+      }
 
+      const quizId = uuidv4();
       const quiz = {
         quizId,
         quizName,

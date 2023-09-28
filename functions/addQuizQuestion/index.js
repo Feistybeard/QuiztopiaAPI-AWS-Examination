@@ -9,9 +9,8 @@ const handler = middy()
       if (!event?.userId || (event?.error && event?.error === '401'))
         return sendError(401, { success: false, message: 'Invalid token' });
 
-      const { quizId } = event.pathParameters;
       const { userId } = event;
-
+      const { quizId } = event.pathParameters;
       if (!quizId)
         return sendError(400, { success: false, message: 'Missing quizId' });
 
@@ -31,13 +30,20 @@ const handler = middy()
           success: false,
           message: 'Not authorized to add questions to this quiz',
         });
-      console.log('quiz.Item.userId', quiz.Item.userId);
 
       const { question, answer, location } = JSON.parse(event.body);
       if (!question || !answer || !location || !location.lat || !location.lon)
         return sendError(400, {
           success: false,
           message: 'Please provide a question, answer, and location',
+        });
+
+      const { questions } = quiz.Item;
+      const questionExists = questions.some((q) => q.question === question);
+      if (questionExists)
+        return sendError(400, {
+          success: false,
+          message: 'Question already exists',
         });
 
       const questionToAdd = {
