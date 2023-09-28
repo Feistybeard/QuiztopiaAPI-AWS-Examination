@@ -20,6 +20,7 @@ const handler = middy()
         quizName,
         questions: [],
         userId: event.userId,
+        leaderboard: [],
       };
 
       await db

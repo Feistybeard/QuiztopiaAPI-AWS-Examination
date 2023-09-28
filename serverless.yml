@@ -61,6 +61,18 @@ functions:
       - httpApi:
           path: '/api/auth/login'
           method: POST
+  leaderboardAddPoint:
+    handler: functions/leaderboardAddPoint/index.handler
+    events:
+      - httpApi:
+          path: '/api/leaderboard/{quizId}'
+          method: POST
+  leaderboardGet:
+    handler: functions/leaderboardGet/index.handler
+    events:
+      - httpApi:
+          path: '/api/leaderboard/{quizId}'
+          method: GET
 
 resources:
   Resources:
